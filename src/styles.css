@@ -1,1 +1,152 @@
-/* You can add global styles to this file, and also import other style files */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+body {
+  background: #eee;
+  margin: 0;
+  font: 14px/1.6 "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  overflow: hidden;
+}
+.wrapper {
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.wrapper.lock {
+    overflow: hidden;
+  }
+.app {
+  padding: 40px 15px;
+  position: relative;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0 1em;
+}
+header span {
+    color: #999;
+    text-transform: uppercase;
+  }
+header h1 {
+    font-size: 34px;
+    margin: 0;
+    line-height: 1.3em;
+  }
+header .avatar {
+    width: 40px;
+    height: 40px;
+    background: #444;
+    border-radius: 100%;
+  }
+.card {
+  position: relative;
+  height: 412px;
+  width: 100%;
+}
+.card + .card {
+    margin-top: 40px;
+  }
+.card .content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0);
+    overflow: hidden;
+    transition: all .4s ease-in-out;
+  }
+.card .article {
+    padding: 15px;
+    transition: all .4s;
+    -webkit-transform: translateY(-20%);
+            transform: translateY(-20%);
+    opacity: 0;
+  }
+.card .cover {
+    position: relative;
+    height: 412px;
+    width: 100%;
+    padding: 15px;
+    background-size: cover;
+    color: #fff;
+    border-radius: 15px;
+    transition: all .4s ease-in-out;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    z-index: 100;
+  }
+.card .cover .category {
+      color: rgba(255, 255, 255, .7);
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+.card .cover .title {
+      margin: 0;
+      font-size: 28px;
+    }
+.card .cover .footer {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      color: rgba(255, 255, 255, .7);
+    }
+.card .close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    border: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    line-height: 1;
+    background: rgba(255, 255, 255, .8);
+    color: rgba(0, 0, 0, .8);
+    text-align: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: all .4s ease-in-out,
+      background .3s linear, color .3s linear;
+  }
+.card .close.reverse {
+      background: rgba(0, 0, 0, .8);
+      color: rgba(255, 255, 255, .8);
+    }
+.card.open {
+  cursor: default;
+}
+.card {
+  cursor: pointer;
+}
+
+.card.open .close {
+      z-index: 600;
+      opacity: 1;
+    }
+
+.card.open .content {
+      z-index: 500;
+      left: -15px;
+      right: -15px;
+      height: 100vh;
+      overflow: hidden;
+      overflow-y: auto;
+      background: rgba(255, 255, 255, 1);
+    }
+.card.open .cover {
+      border-radius: 0;
+    }
+.card.open .article {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
